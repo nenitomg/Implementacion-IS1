@@ -49,13 +49,7 @@ public class LineaDeReceta {
         this.a = a;
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
     @Override
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     public boolean equals(Object o){
         
         LineaDeReceta lr = (LineaDeReceta)o;
@@ -63,27 +57,18 @@ public class LineaDeReceta {
         return this.getAlimento().equals(lr.getAlimento());
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     @Override
     public int hashCode(){
+        return Objects.hash(this.a.nombre,this.cantidad,this.uMedida);
+    }
+
+public int hashCode(){
         return Objects.hash(this.a.nombre,this.cantidad,this.uMedida);
     }
     
        
     @Override
-=======
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
-          public int hashCode(){
-        return Objects.hash(this.a.nombre,this.cantidad,this.uMedida);
-          }
-    
-       
-<<<<<<< HEAD
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     public String toString(){
         
         String Str = new String();
