@@ -24,7 +24,10 @@ public class comidaDiaria {
     private Set <Receta> rs;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     
@@ -36,6 +39,7 @@ public class comidaDiaria {
         
         this.rs = new HashSet();
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     
@@ -65,6 +69,8 @@ public class comidaDiaria {
     }
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
+=======
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     
      public String getNombre() {
         return nombre;
@@ -83,6 +89,9 @@ public class comidaDiaria {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
@@ -112,10 +121,13 @@ public class comidaDiaria {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public boolean equals(Object o){
         comidaDiaria cd = (comidaDiaria) o;
 =======
+=======
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     public boolean equals(Object o){
@@ -124,6 +136,9 @@ public class comidaDiaria {
         comidaDiaria cd = (comidaDiaria) o;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
+=======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
@@ -133,8 +148,14 @@ public class comidaDiaria {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public int hashCode(){
+=======
+    public int hashCode(){
+       
+        
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
     public int hashCode(){
        

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/LineaDeReceta.java</file>
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/Receta.java</file>
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/Registro.java</file>
@@ -11,6 +12,11 @@
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/Controlador.java</file>
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/comidaDiaria.java</file>
             <file>file:/C:/Users/eugen/Desktop/IS1/Implementacion-IS1/src/implementacion/is1/GrupoAlimentos.java</file>
+=======
+            <file>file:/D:/Documentos/GitHub/Implementacion-IS1/src/implementacion/is1/GrupoAlimentos.java</file>
+            <file>file:/D:/Documentos/GitHub/Implementacion-IS1/src/implementacion/is1/Pantalla.java</file>
+            <file>file:/D:/Documentos/GitHub/Implementacion-IS1/src/implementacion/is1/LineaDeReceta.java</file>
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
         </group>
     </open-files>
 </project-private>
