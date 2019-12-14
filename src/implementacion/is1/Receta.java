@@ -28,6 +28,7 @@ public class Receta {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public Receta() {
         
@@ -180,6 +181,61 @@ public class Receta {
  
     
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
+=======
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getInstrucciones() {
+        return instrucciones;
+    }
+
+    public void setInstrucciones(String instrucciones) {
+        this.instrucciones = instrucciones;
+    }
+
+    public Set<LineaDeReceta> getLrs() {
+        return lrs;
+    }
+
+    public void setLrs(Set<LineaDeReceta> lrs) {
+        this.lrs = lrs;
+    }
+    
+    public boolean nuevaLr(Alimento a, String uMedida, float cantidad){
+        boolean exito;
+        
+        LineaDeReceta lr = new LineaDeReceta(a,uMedida,cantidad);
+        
+        exito = lrs.add(lr);
+        
+        return exito;
+        
+        
+    
+    }
+    
+    public boolean equals(Object o){
+        
+        Receta r = (Receta) o;
+        
+        return this.getNombre().equals(r.getNombre());
+    }
+    
+          public int hashCode(){
+        
+        return Objects.hash(this.nombre,this.instrucciones);
+    }
+    
+    
+ 
+    
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
     public String toString(){
         String Str = new String();
         
@@ -194,7 +250,13 @@ public class Receta {
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    
+=======
+        
+        
+        
+>>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
         
         
