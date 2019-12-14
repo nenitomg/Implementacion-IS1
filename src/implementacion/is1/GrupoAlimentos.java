@@ -49,15 +49,9 @@ public class GrupoAlimentos {
         boolean exito;
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
         
         exito = la.add(a);
         
-=======
-        
-        exito = la.add(a);
-        
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
         
         exito = la.add(a);
@@ -99,10 +93,7 @@ public class GrupoAlimentos {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
@@ -115,13 +106,8 @@ public class GrupoAlimentos {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
     public int hashCode(){
-=======
-      public int hashCode(){
-        
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
       public int hashCode(){
         
@@ -136,10 +122,7 @@ public class GrupoAlimentos {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
