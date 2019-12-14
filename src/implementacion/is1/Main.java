@@ -11,9 +11,11 @@ package implementacion.is1;
  */
 public class Main {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        Pantalla p = new Pantalla();
-        p.menuPrincipal();
+        // TODO code application logic here
     }
     
 }
