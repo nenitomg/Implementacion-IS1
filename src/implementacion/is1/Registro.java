@@ -8,6 +8,7 @@ package implementacion.is1;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.SortedSet;
 
 /**
  *
@@ -19,12 +20,12 @@ public class Registro {
     public List<Receta>ldr;
     public List<GrupoAlimentos>lga;
     
-    public void nuevoGrupoAlimento(GrupoAlimentos ga){
-    
+    public boolean nuevoGrupoAlimento(GrupoAlimentos ga){
+        return lga.add(ga);
     }
     
-    public void borrarGrupoAlimento(GrupoAlimentos ga){
-    
+    public boolean borrarGrupoAlimento(GrupoAlimentos ga){
+        return lga.remove(ga);
     }
     
     public GrupoAlimentos getGrupoAlimentos(String nom){
@@ -53,8 +54,8 @@ public class Registro {
         return null;
     }
     
-    public void nuevaReceta(Receta r){
-    
+    public boolean nuevaReceta(Receta r){
+        return ldr.add(r);
     }
     
     public Receta getReceta(String nomReceta){
@@ -70,13 +71,13 @@ public class Registro {
         return null;
     }
     
-    public void añadirComida(comidaDiaria cd){
-    
+    public boolean añadirComida(comidaDiaria cd){
+        return lcd.add(cd);
     }
     
-    public List<comidaDiaria> getComidas(GregorianCalendar inicio, GregorianCalendar fin){
+    public SortedSet<comidaDiaria> getComidas(GregorianCalendar inicio, GregorianCalendar fin){
         Iterator it = lcd.iterator();
-        List <comidaDiaria> aux = null;
+        SortedSet <comidaDiaria> aux = null;
         
         while(it.hasNext()){
             comidaDiaria cd = (comidaDiaria)it.next();
