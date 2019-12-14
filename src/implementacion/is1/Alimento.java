@@ -52,10 +52,7 @@ public class Alimento {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
@@ -69,13 +66,8 @@ public class Alimento {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
     public int hashCode(){
-=======
-    public int hashCode(){
-        
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
     public int hashCode(){
         
@@ -90,10 +82,7 @@ public class Alimento {
    
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     @Override
-=======
->>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
 >>>>>>> cf561aed30b290081c77c1bc66ca700d608a88d9
 =======
