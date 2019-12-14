@@ -6,7 +6,6 @@
 package implementacion.is1;
 
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -15,6 +14,10 @@ import java.util.List;
  */
 public class Controlador {
 
+    /**
+     * @param args the command line arguments
+     */
+    
     List <comidaDiaria> cds;
     public Receta r;
     public Alimento a;
@@ -25,15 +28,15 @@ public class Controlador {
     
     
     public static void crearReceta(){
-
+    
     }
     
     public static void inNomInstReceta(String nom,String inst){
-        
+    
     }
     
     public static void añadirAlimentoReceta(String nomAlimento, String uMedida, float cantidad){
-
+    
     }
     
     public static void confirmarReceta(){
