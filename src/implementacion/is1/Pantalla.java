@@ -5,15 +5,13 @@
  */
 package implementacion.is1;
 
-/**
- *
- * @author eugen
- */
-public class Main {
-
-    public static void main(String[] args) {
-        Pantalla p = new Pantalla();
-        p.menuPrincipal();
+public class Pantalla {
+    
+    public Pantalla(){
+        
     }
     
+    public void menuPrincipal(){
+        
+    }
 }
