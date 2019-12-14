@@ -14,10 +14,6 @@ import java.util.List;
  */
 public class Controlador {
 
-    /**
-     * @param args the command line arguments
-     */
-    
     List <comidaDiaria> cds;
     public Receta r;
     public Alimento a;
