@@ -21,14 +21,10 @@ public class GrupoAlimentos {
     private String descripcion;
     public Set<Alimento> la;
     
-    public GrupoAlimentos(String nombre, String descripcion){
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.la = new HashSet();
-        
+    public GrupoAlimentos(){
+        this.la = new HashSet();   
     }
     
-
     public String getNombre() {
         return nombre;
     }

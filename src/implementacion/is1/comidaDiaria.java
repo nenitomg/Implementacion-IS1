@@ -24,11 +24,7 @@ public class comidaDiaria {
     private Set <Receta> rs;
     
     
-    public comidaDiaria(String nombre){
-        this.nombre = nombre;
-        
-        this.fecha = new GregorianCalendar();
-        
+    public comidaDiaria(){ 
         this.rs = new HashSet();
     }
     
@@ -51,6 +47,10 @@ public class comidaDiaria {
     public Calendar getFecha(){
         return this.fecha;
     }
+
+    public void setFecha() {
+        this.fecha = new GregorianCalendar();
+    }
     
     public boolean añadirReceta(Receta r){
         
@@ -59,9 +59,7 @@ public class comidaDiaria {
         exito = this.rs.add(r);
         
         return exito;
-        
-        
-    
+
     }
     
     public int compareTo(Object o){

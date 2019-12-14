@@ -5,8 +5,7 @@
  */
 package implementacion.is1;
 
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -14,84 +13,114 @@ import java.util.List;
  */
 public class Controlador {
 
-    List <comidaDiaria> cds;
+    SortedSet <comidaDiaria> cds;
+    public comidaDiaria cd;
     public Receta r;
     public Alimento a;
     public GrupoAlimentos ga;
     public Registro registro;
     
- 
-    
-    
-    public static void crearReceta(){
-    
+    public Controlador (){
+        registro = new Registro();
     }
     
-    public static void inNomInstReceta(String nom,String inst){
-    
+    public void crearReceta(){
+        r = new Receta();
     }
     
-    public static void añadirAlimentoReceta(String nomAlimento, String uMedida, float cantidad){
-    
+    public void inNomInstReceta(String nom,String inst){
+        r.setNombre(nom);
+        r.setInstrucciones(inst);
     }
     
-    public static void confirmarReceta(){
-    
+    public void añadirAlimentoReceta(String nomAlimento, String uMedida, float cantidad){
+        a = registro.getAlimento(nomAlimento);
+        r.nuevaLr(a, uMedida, cantidad);
     }
     
-    public static void inNomReceta(String nom){
-    
+    public boolean confirmarReceta(){
+        return registro.nuevaReceta(r);
     }
     
-    public static void añadirGrupoAlimentos(){
-    
+    public String inNomReceta(String nom){
+        r = registro.getReceta(nom);
+        return r.toString();
     }
     
-    public static void inNomDescGA(String nom, String desc){
-    
+    public void añadirGrupoAlimentos(){
+        ga = new GrupoAlimentos();
     }
     
-    public static void añadirAlimento(String nomAlimento){
-    
+    public void inNomDescGA(String nom, String desc){
+        ga.setDescripcion(desc);
+        ga.setNombre(nom);
     }
     
-    public static void confirmarGrupo(){
-    
+    public boolean añadirAlimento(String nomAlimento){
+        a = registro.getAlimento(nomAlimento);
+        if(a == null){
+            return false;
+        }else{
+            ga.añadirAlimento(a);
+            return true;
+        }
     }
     
-    public static void inNomGA(String nom){
-    
+    public boolean confirmarGrupo(){
+        return registro.nuevoGrupoAlimento(ga);  
     }
     
-    public static void confirmarBorradoGA(){
-    
+    public void inNomGA(String nom){
+        ga = registro.getGrupoAlimentos(nom);
     }
     
-    public static void eliminarAlimentoGA(String nomAlimento){
-    
+    public void confirmarBorradoGA(){
+        registro.borrarGrupoAlimento(ga);
     }
     
-    public static void confirmarBorradoA(){
-    
+    public boolean eliminarAlimentoGA(String nomAlimento){
+        a = ga.getAlimento(nomAlimento);
+        if(a == null){
+            return false;
+        }else{
+            ga.añadirAlimento(a);
+            return true;
+        }
     }
     
-    public static void inFechas(GregorianCalendar inicio, GregorianCalendar fin){
-    
+    public void confirmarBorradoA(){
+        ga.eliminarAlimento(a);
     }
     
-    public static void registroComida(){
-    
+    public String inFechas(GregorianCalendar inicio, GregorianCalendar fin){
+        cds = registro.getComidas(inicio, fin);
+        if (cds.isEmpty()){
+            return "No Hay ninguna comida entre esas fechas";
+        }else{
+            String s = "";
+            Iterator it = cds.iterator();
+            while(it.hasNext()){
+               s += it.next().toString() + "\n"; 
+            }
+            return s;
+        }
     }
     
-    public static void inNomComida(String nom){
-    
+    public void registroComida(){
+        cd = new comidaDiaria();
     }
     
-    public static void añadirReceta(String nomReceta){
-    
+    public void inNomComida(String nom){
+        cd.setNombre(nom);
+        cd.setFecha();
     }
     
-    public static void confirmarComida(){
+    public void añadirReceta(String nomReceta){
+        r = registro.getReceta(nomReceta);
+        cd.añadirReceta(r);
+    }
     
+    public void confirmarComida(){
+        registro.añadirComida(cd);
     }
 }

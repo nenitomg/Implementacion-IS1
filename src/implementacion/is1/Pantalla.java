@@ -7,8 +7,9 @@ package implementacion.is1;
 
 public class Pantalla {
     
+    private Controlador ctrl;
     public Pantalla(){
-        
+        ctrl = new Controlador();
     }
     
     public void menuPrincipal(){

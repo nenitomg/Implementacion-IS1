@@ -21,9 +21,7 @@ public class Receta {
     private String instrucciones;  
     private Set<LineaDeReceta>lrs;
     
-    public Receta(String nombre, String instrucciones){
-        this.nombre = nombre;
-        this.instrucciones = instrucciones;
+    public Receta(){
         this.lrs = new HashSet();
     }
     
