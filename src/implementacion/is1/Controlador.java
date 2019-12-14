@@ -24,11 +24,8 @@ public class Controlador {
     public GrupoAlimentos ga;
     public Registro registro;
     
+ 
     
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
     
     public static void crearReceta(){
     
