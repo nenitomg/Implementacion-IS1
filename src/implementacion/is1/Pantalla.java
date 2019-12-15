@@ -58,7 +58,7 @@ public class Pantalla {
                              + "Introduzca la operación que desea realizar:");
             i = s.nextInt();
             switch (i) {
-                case 1:
+                case 1: //Registrar Receta
                     ctrl.crearReceta();
                     System.out.println("\nIntroduzca el nombre de la Receta:");
                     String nom = s.nextLine();
@@ -98,7 +98,7 @@ public class Pantalla {
                         System.out.println("\nYa existe una Receta con ese nombre en el Sistema\n");
                     }
                     break;
-                case 2:
+                case 2: //Consultar Receta
                     System.out.println("\nIntroduzca el nombre de la Receta:");
                     String nomReceta = s.nextLine();
                     System.out.println(ctrl.inNomReceta(nomReceta));
@@ -126,7 +126,7 @@ public class Pantalla {
                              + "Introduzca la operación que desea realizar:");
             i = s.nextInt();
             switch (i) {
-                case 1:
+                case 1: //Crear Grupo de Alimentos
                     ctrl.añadirGrupoAlimentos();
                     System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
                     String nom = s.nextLine();
@@ -158,50 +158,30 @@ public class Pantalla {
                         System.out.println("\nYa existe un Grupo de Alimentos con ese nombre en el Sistema\n");
                     }
                     break;
-                case 2:
+                case 2: //Eliminar Grupo de Alimentos
                     System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
                     String nomGrupo = s.nextLine();
-                    ctrl.inNomGA(nomGrupo);
-                    if (ctrl.getGa() == null){
-                        System.out.println("No existe un Grupo de Alimentos con ese nombre en el Sistema\n");
-                    }else{
-                        ctrl.confirmarBorradoGA();
-                    }
-                    break;
-                case 3:
-                    System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
-                    nomGrupo = s.nextLine();
-                    ctrl.inNomGA(nomGrupo);
-                    if (ctrl.getGa() == null){
-                        System.out.println("No existe un Grupo de Alimentos con ese nombre en el Sistema\n");
-                    }else{
-                        System.out.println("\nIntroduzca el nombre del Alimento que desea eliminar:");
-                        nomAlimento = s.nextLine();
-                        System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
+                    System.out.println(ctrl.inNomGA(nomGrupo));
+                    if (ctrl.getGa() != null){
                         j = -1;
                         while (j != 0){
-                            System.out.println("\n¿Desea eliminar más Alimentos?\n"
-                                             + "1. Seguir eliminando\n"
-                                             + "0. Salir\n");
+                            System.out.println("\n¿Desea eliminar este Grupo de Alimentos?\n"
+                                             + "1. Eliminar\n"
+                                             + "0. Cancelar\n");
                             j = s.nextInt();
                             if (i == 1){
-                                System.out.println("\nIntroduzca el nombre del Alimento:");
-                                nomAlimento = s.nextLine();
-                                System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
+                                ctrl.confirmarBorradoGA();
                             }else{
                                 
                             }
-                        }
-                        ctrl.confirmarBorradoA();
+                        } 
                     }
                     break;
-                case 4:
+                case 3: //Añadir Alimentos a un Grupo
                     System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
                     nomGrupo = s.nextLine();
-                    ctrl.inNomGA(nomGrupo);
-                    if (ctrl.getGa() == null){
-                        System.out.println("No existe un Grupo de Alimentos con ese nombre en el Sistema\n");
-                    }else{
+                    System.out.println(ctrl.inNomGA(nomGrupo));
+                    if (ctrl.getGa() != null){
                         System.out.println("\nIntroduzca el nombre del Alimento:");
                         nomAlimento = s.nextLine();
                         if(!ctrl.añadirAlimento(nomAlimento)){
@@ -225,7 +205,55 @@ public class Pantalla {
                         }
                     }
                     break;
-                case 5:
+                case 4: //Eliminar Alimentos de un Grupo
+                    System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
+                    nomGrupo = s.nextLine();
+                    System.out.println(ctrl.inNomGA(nomGrupo));
+                    if (ctrl.getGa() != null){
+                        System.out.println("\nIntroduzca el nombre del Alimento que desea eliminar:");
+                        nomAlimento = s.nextLine();
+                        System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
+                        int p = -1;
+                        while (p != 0 && p != 1){
+                            System.out.println("\n¿Desea eliminar este Alimento?\n"
+                                             + "1. Eliminar\n"
+                                             + "0. Cancelar\n");
+                            p = s.nextInt();
+                            if (i == 1){
+                                ctrl.confirmarBorradoA();
+                            }else{
+                                
+                            }
+                        }
+                        j = -1;
+                        while (j != 0){
+                            System.out.println("\n¿Desea eliminar más Alimentos?\n"
+                                             + "1. Seguir eliminando\n"
+                                             + "0. Salir\n");
+                            j = s.nextInt();
+                            if (i == 1){
+                                System.out.println("\nIntroduzca el nombre del Alimento que desea eliminar:");
+                                nomAlimento = s.nextLine();
+                                System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
+                                p = -1;
+                                while (p != 0 && p != 1){
+                                    System.out.println("\n¿Desea eliminar este Alimento?\n"
+                                                     + "1. Eliminar\n"
+                                                     + "0. Cancelar\n");
+                                    p = s.nextInt();
+                                    if (i == 1){
+                                        ctrl.confirmarBorradoA();
+                                    }else{
+                                
+                                    }
+                                }
+                            }else{
+                                
+                            }
+                        } 
+                    }
+                    break;
+                case 5: //Consultar Grupo de Alimentos
                     System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
                     nomGrupo = s.nextLine();
                     System.out.println(ctrl.inNomGA(nomGrupo));
@@ -250,7 +278,7 @@ public class Pantalla {
                              + "Introduzca la operación que desea realizar:");
             i = s.nextInt();
             switch (i) {
-                case 1:
+                case 1: //Consultar Comidas
                     System.out.println("Introduzca la fecha inicial de consulta:\n"
                                      + "Día:");
                     int di = s.nextInt();
@@ -269,7 +297,7 @@ public class Pantalla {
                     GregorianCalendar fin = new GregorianCalendar(df, mf, af);
                     System.out.println(ctrl.inFechas(inicio, fin));
                     break;
-                case 2:
+                case 2: //Registrar Comida
                     ctrl.registroComida();
                     System.out.println("\nIntroduzca el nombre de la Comida:");
                     String nom = s.nextLine();
