@@ -57,9 +57,6 @@ public class Receta {
         exito = lrs.add(lr);
         
         return exito;
-        
-        
-    
     }
     
     public boolean equals(Object o){
@@ -89,9 +86,6 @@ public class Receta {
             
             Str+= "  - "+lr.toString()+"\n";
         }
-        
-        
-        
         return Str;
     }
 }

@@ -33,9 +33,14 @@ public class Controlador {
         r.setInstrucciones(inst);
     }
     
-    public void añadirAlimentoReceta(String nomAlimento, String uMedida, float cantidad){
+    public boolean añadirAlimentoReceta(String nomAlimento, String uMedida, float cantidad){
         a = registro.getAlimento(nomAlimento);
-        r.nuevaLr(a, uMedida, cantidad);
+        if (a == null){
+            return false;
+        }else{
+            r.nuevaLr(a, uMedida, cantidad);
+            return true;
+        } 
     }
     
     public boolean confirmarReceta(){
@@ -44,7 +49,11 @@ public class Controlador {
     
     public String inNomReceta(String nom){
         r = registro.getReceta(nom);
-        return r.toString();
+        if (r == null){
+            return "No hay ninguna Receta con ese nombre en el Sistema\n";
+        }else{
+            return r.toString();
+        }  
     }
     
     public void añadirGrupoAlimentos(){
@@ -70,21 +79,25 @@ public class Controlador {
         return registro.nuevoGrupoAlimento(ga);  
     }
     
-    public void inNomGA(String nom){
+    public String inNomGA(String nom){
         ga = registro.getGrupoAlimentos(nom);
+        if (ga == null){
+            return "No hay ningún Grupo de Alimentos con ese nombre en el Sistema\n";
+        }else{
+            return ga.toString();
+        }
     }
     
     public void confirmarBorradoGA(){
         registro.borrarGrupoAlimento(ga);
     }
     
-    public boolean eliminarAlimentoGA(String nomAlimento){
+    public String eliminarAlimentoGA(String nomAlimento){
         a = ga.getAlimento(nomAlimento);
         if(a == null){
-            return false;
+            return "El Alimento no existe en este Grupo";
         }else{
-            ga.añadirAlimento(a);
-            return true;
+            return a.toString();
         }
     }
     
@@ -94,8 +107,8 @@ public class Controlador {
     
     public String inFechas(GregorianCalendar inicio, GregorianCalendar fin){
         cds = registro.getComidas(inicio, fin);
-        if (cds.isEmpty()){
-            return "No Hay ninguna comida entre esas fechas";
+        if (cds == null){
+            return "No hay ninguna comida entre esas fechas\n";
         }else{
             String s = "";
             Iterator it = cds.iterator();
@@ -115,12 +128,67 @@ public class Controlador {
         cd.setFecha();
     }
     
-    public void añadirReceta(String nomReceta){
+    public boolean añadirReceta(String nomReceta){
         r = registro.getReceta(nomReceta);
-        cd.añadirReceta(r);
+        if (r == null){
+            return false;
+        }else{
+            cd.añadirReceta(r);
+            return true;
+        }
     }
     
-    public void confirmarComida(){
-        registro.añadirComida(cd);
+    public boolean confirmarComida(){
+        return registro.añadirComida(cd);
     }
+
+    public SortedSet<comidaDiaria> getCds() {
+        return cds;
+    }
+
+    public void setCds(SortedSet<comidaDiaria> cds) {
+        this.cds = cds;
+    }
+
+    public comidaDiaria getCd() {
+        return cd;
+    }
+
+    public void setCd(comidaDiaria cd) {
+        this.cd = cd;
+    }
+
+    public Receta getR() {
+        return r;
+    }
+
+    public void setR(Receta r) {
+        this.r = r;
+    }
+
+    public Alimento getA() {
+        return a;
+    }
+
+    public void setA(Alimento a) {
+        this.a = a;
+    }
+
+    public GrupoAlimentos getGa() {
+        return ga;
+    }
+
+    public void setGa(GrupoAlimentos ga) {
+        this.ga = ga;
+    }
+
+    public Registro getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(Registro registro) {
+        this.registro = registro;
+    }
+    
+    
 }
