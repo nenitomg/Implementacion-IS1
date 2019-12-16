@@ -47,8 +47,10 @@ public class ControladorTest {
         System.out.println("crearReceta");
         Controlador instance = new Controlador();
         instance.crearReceta();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.getR().setNombre("nom1");
+        String expResult = "nom1";
+        String result = instance.getR().getNombre();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -57,12 +59,17 @@ public class ControladorTest {
     @Test
     public void testInNomInstReceta() {
         System.out.println("inNomInstReceta");
-        String nom = "";
-        String inst = "";
+        String nom = "nom1";
+        String inst = "inst1";
+        Receta r = new Receta();
         Controlador instance = new Controlador();
+        instance.crearReceta();
+        instance.getR().setNombre(nom);
+        instance.getR().setInstrucciones(inst);
         instance.inNomInstReceta(nom, inst);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = instance.getR().getNombre() == nom && instance.getR().getInstrucciones() == inst;
+        assertEquals(expResult, result);
     }
 
     /**
@@ -70,16 +77,15 @@ public class ControladorTest {
      */
     @Test
     public void testAñadirAlimentoReceta() {
-        System.out.println("a\u00f1adirAlimentoReceta");
-        String nomAlimento = "";
-        String uMedida = "";
-        float cantidad = 0.0F;
+        System.out.println("añadirAlimentoReceta");
+        String nomAlimento = "Ajo";
+        String uMedida = "u1";
+        float cantidad = 3.0F;
         Controlador instance = new Controlador();
-        boolean expResult = false;
+        instance.crearReceta();
+        boolean expResult = true;
         boolean result = instance.añadirAlimentoReceta(nomAlimento, uMedida, cantidad);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -89,11 +95,11 @@ public class ControladorTest {
     public void testConfirmarReceta() {
         System.out.println("confirmarReceta");
         Controlador instance = new Controlador();
-        boolean expResult = false;
+        instance.crearReceta();
+        instance.getR().setNombre("nom1");
+        boolean expResult = true;
         boolean result = instance.confirmarReceta();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,13 +108,17 @@ public class ControladorTest {
     @Test
     public void testInNomReceta() {
         System.out.println("inNomReceta");
-        String nom = "";
+        String nom = "nom1";
+        Receta r = new Receta();
+        r.setNombre(nom);
+        r.setInstrucciones("inst1");
+        Alimento a = new Alimento("nom1", "desc1", "tempC1");
+        r.nuevaLr(a, "u1", 3);
         Controlador instance = new Controlador();
-        String expResult = "";
+        instance.setR(r);
+        String expResult = r.toString();
         String result = instance.inNomReceta(nom);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -116,11 +126,9 @@ public class ControladorTest {
      */
     @Test
     public void testAñadirGrupoAlimentos() {
-        System.out.println("a\u00f1adirGrupoAlimentos");
+        System.out.println("añadirGrupoAlimentos");
         Controlador instance = new Controlador();
         instance.añadirGrupoAlimentos();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
