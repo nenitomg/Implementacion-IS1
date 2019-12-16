@@ -6,10 +6,11 @@
 package implementacion.is1;
 
 import java.util.*;
+import java.util.Scanner;
 
 public class Pantalla {
     
-    private Controlador ctrl;
+    public Controlador ctrl;
     public Pantalla(){
         ctrl = new Controlador();
     }
@@ -27,9 +28,9 @@ public class Pantalla {
                              + "3. Gestionar Comidas\n\n"
                              + "0. Salir\n\n"
                              + "Introduzca la operación que desea realizar:");
-            i = s.nextInt();
+            i = Integer.parseInt(s.nextLine());
             switch (i) {
-                case 1:
+                case 1: 
                     menuGestionRecetas();
                     break;
                 case 2:
@@ -56,42 +57,48 @@ public class Pantalla {
                              + "2. Consultar Receta\n\n"
                              + "0. Salir\n\n"
                              + "Introduzca la operación que desea realizar:");
-            i = s.nextInt();
+            i = Integer.parseInt(s.nextLine());
             switch (i) {
-                case 1: //Registrar Receta
+                case 1: //Registrar Receta1
                     ctrl.crearReceta();
                     System.out.println("\nIntroduzca el nombre de la Receta:");
-                    String nom = s.nextLine();
+                    String nom = (String)s.nextLine();
                     System.out.println("Introduzca las intrucciones de la Receta:");
-                    String inst = s.nextLine();
+                    String inst = (String)s.nextLine();
                     ctrl.inNomInstReceta(nom, inst);
                     System.out.println("Introduzca el nombre del primer ingrediente:");
-                    String nomAlimento = s.nextLine();
-                    System.out.println("Introduzca la cantidad:");
-                    float cantidad = s.nextInt();
-                    System.out.println("Introduzca la unidad de medida:");
-                    String uMedida = s.nextLine();
-                    if(!ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad)){
+                    String nomAlimento = (String)s.nextLine();
+                    
+                    if(ctrl.registro.getAlimento(nomAlimento)!=null){
+                        System.out.println("Introduzca la cantidad:");
+                        float cantidad = s.nextFloat();
+                        System.out.println("Introduzca la unidad de medida:");
+                        String uMedida = (String)s.nextLine();
+                        ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad);
+                    }
+                    else{
                         System.out.println("\nEl ingrediente no existe en el Sistema\n");
                     }
+                            
                     int j = -1;
                     while (j != 0){
                         System.out.println("\n¿Desea agregar más ingredientes?\n"
                                          + "1. Seguir agregando\n"
                                          + "0. Salir\n");
-                        j = s.nextInt();
-                        if (i == 1){
+                        j = Integer.parseInt(s.nextLine());
+                        if (j == 1){
                             System.out.println("Introduzca el nombre del ingrediente:");
                             nomAlimento = s.nextLine();
-                            System.out.println("Introduzca la cantidad:");
-                            cantidad = s.nextInt();
-                            System.out.println("Introduzca la unidad de medida:");
-                            uMedida = s.nextLine();
-                            if(!ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad)){
+                            if(ctrl.registro.getAlimento(nomAlimento)!=null){
+                                System.out.println("Introduzca la cantidad:");
+                                int cantidad = Integer.parseInt(s.nextLine());
+                                System.out.println("Introduzca la unidad de medida:");
+                                String uMedida = s.nextLine();
+                                ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad);
+                            }
+                            else{
                                 System.out.println("\nEl ingrediente no existe en el Sistema\n");
                             }
-                        }else{
-                            
                         }
                     }
                     if (!ctrl.confirmarReceta()){
@@ -99,9 +106,20 @@ public class Pantalla {
                     }
                     break;
                 case 2: //Consultar Receta
-                    System.out.println("\nIntroduzca el nombre de la Receta:");
-                    String nomReceta = s.nextLine();
-                    System.out.println(ctrl.inNomReceta(nomReceta));
+                    int k=-1;
+                    
+                    while(k!=0){
+                        if(k==-1){
+                            k++;
+                            System.out.println("\nIntroduzca el nombre de la Receta:");
+                            String nomReceta = s.nextLine();
+                            System.out.println(ctrl.inNomReceta(nomReceta));
+                            System.out.println("\nPara salir pulse 0: ");
+                            k=Integer.parseInt(s.nextLine());
+                        }
+                    }
+                        
+                        
                     break;
                 default:
                     break;
