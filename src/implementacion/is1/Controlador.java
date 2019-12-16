@@ -95,7 +95,7 @@ public class Controlador {
     public String eliminarAlimentoGA(String nomAlimento){
         a = ga.getAlimento(nomAlimento);
         if(a == null){
-            return "El Alimento no existe en este Grupo";
+            return null;
         }else{
             return a.toString();
         }

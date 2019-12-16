@@ -118,8 +118,6 @@ public class Pantalla {
                             k=Integer.parseInt(s.nextLine());
                         }
                     }
-                        
-                        
                     break;
                 default:
                     break;
@@ -142,7 +140,7 @@ public class Pantalla {
                              + "5. Consultar Grupo de Alimentos\n\n"
                              + "0. Salir\n\n"
                              + "Introduzca la operación que desea realizar:");
-            i = s.nextInt();
+            i = Integer.parseInt(s.nextLine());
             switch (i) {
                 case 1: //Crear Grupo de Alimentos
                     ctrl.añadirGrupoAlimentos();
@@ -161,15 +159,13 @@ public class Pantalla {
                         System.out.println("\n¿Desea agregar más Alimentos?\n"
                                          + "1. Seguir agregando\n"
                                          + "0. Salir\n");
-                        j = s.nextInt();
-                        if (i == 1){
+                        j = Integer.parseInt(s.nextLine());
+                        if (j == 1){
                             System.out.println("\nIntroduzca el nombre del Alimento:");
                             nomAlimento = s.nextLine();
                             if(!ctrl.añadirAlimento(nomAlimento)){
                                 System.out.println("\nEl Alimento no existe en el Sistema\n");
                             }
-                        }else{
-                                
                         }
                     }
                     if (!ctrl.confirmarGrupo()){
@@ -182,15 +178,13 @@ public class Pantalla {
                     System.out.println(ctrl.inNomGA(nomGrupo));
                     if (ctrl.getGa() != null){
                         j = -1;
-                        while (j != 0){
+                        if(j == 1){
                             System.out.println("\n¿Desea eliminar este Grupo de Alimentos?\n"
                                              + "1. Eliminar\n"
                                              + "0. Cancelar\n");
-                            j = s.nextInt();
-                            if (i == 1){
+                            j = Integer.parseInt(s.nextLine());
+                            if (j == 1){
                                 ctrl.confirmarBorradoGA();
-                            }else{
-                                
                             }
                         } 
                     }
@@ -210,15 +204,13 @@ public class Pantalla {
                             System.out.println("\n¿Desea agregar más Alimentos?\n"
                                              + "1. Seguir agregando\n"
                                              + "0. Salir\n");
-                            j = s.nextInt();
+                            j = Integer.parseInt(s.nextLine());
                             if (i == 1){
                                 System.out.println("\nIntroduzca el nombre del Alimento:");
                                 nomAlimento = s.nextLine();
                                 if(!ctrl.añadirAlimento(nomAlimento)){
                                     System.out.println("\nEl Alimento no existe en el Sistema\n");
                                 }
-                            }else{
-                                
                             }
                         }
                     }
@@ -230,54 +222,63 @@ public class Pantalla {
                     if (ctrl.getGa() != null){
                         System.out.println("\nIntroduzca el nombre del Alimento que desea eliminar:");
                         nomAlimento = s.nextLine();
-                        System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
                         int p = -1;
-                        while (p != 0 && p != 1){
-                            System.out.println("\n¿Desea eliminar este Alimento?\n"
-                                             + "1. Eliminar\n"
-                                             + "0. Cancelar\n");
-                            p = s.nextInt();
-                            if (i == 1){
-                                ctrl.confirmarBorradoA();
-                            }else{
-                                
+                        if(ctrl.eliminarAlimentoGA(nomAlimento)!=null){
+                            while (p != 0 && p != 1){
+                                System.out.println("\n¿Desea eliminar este Alimento?\n"
+                                                 + "1. Eliminar\n"
+                                                 + "0. Cancelar\n");
+                                p = Integer.parseInt(s.nextLine());
+                                if (p == 1){
+                                    ctrl.confirmarBorradoA();
+                                }
                             }
+                        }else{
+                            System.out.println("El alimento no existe en el sistema");
                         }
                         j = -1;
                         while (j != 0){
                             System.out.println("\n¿Desea eliminar más Alimentos?\n"
                                              + "1. Seguir eliminando\n"
                                              + "0. Salir\n");
-                            j = s.nextInt();
-                            if (i == 1){
+                            j = Integer.parseInt(s.nextLine());
+                            if (j == 1){
                                 System.out.println("\nIntroduzca el nombre del Alimento que desea eliminar:");
                                 nomAlimento = s.nextLine();
-                                System.out.println(ctrl.eliminarAlimentoGA(nomAlimento));
-                                p = -1;
-                                while (p != 0 && p != 1){
-                                    System.out.println("\n¿Desea eliminar este Alimento?\n"
-                                                     + "1. Eliminar\n"
-                                                     + "0. Cancelar\n");
-                                    p = s.nextInt();
-                                    if (i == 1){
-                                        ctrl.confirmarBorradoA();
-                                    }else{
                                 
+                                
+                                if(ctrl.eliminarAlimentoGA(nomAlimento)!=null){
+                                    p = -1;
+                                    while (p != 0){
+                                        System.out.println("\n¿Desea eliminar este Alimento?\n"
+                                                         + "1. Eliminar\n"
+                                                         + "0. Cancelar\n");
+                                        p = Integer.parseInt(s.nextLine());
+                                        if (p == 1){
+                                            ctrl.confirmarBorradoA();
+                                        }
                                     }
                                 }
-                            }else{
-                                
+                                else{
+                                    System.out.println("El alimento no existe en el sistema");
+                                }
                             }
                         } 
                     }
                     break;
                 case 5: //Consultar Grupo de Alimentos
-                    System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
-                    nomGrupo = s.nextLine();
-                    System.out.println(ctrl.inNomGA(nomGrupo));
-                    break;
-                default:
-                    break;
+                    int k=-1;
+                    
+                    while(k!=0){
+                        if(k==-1){
+                            k++;
+                            System.out.println("\nIntroduzca el nombre del Grupo de Alimentos:");
+                            nomGrupo = s.nextLine();
+                            System.out.println(ctrl.inNomGA(nomGrupo));
+                            System.out.println("\nPara salir pulse 0: ");
+                            k=Integer.parseInt(s.nextLine());
+                        }
+                    }
             }
         }
     }
