@@ -18,7 +18,7 @@ import java.util.Set;
  *
  * @author eugen
  */
-public class comidaDiaria {
+public class comidaDiaria implements Comparable {
     private String nombre;
     private Calendar fecha;
     private Set <Receta> rs;
@@ -88,7 +88,7 @@ public class comidaDiaria {
         
         String Str = new String();
         
-        Str = "Nombre: "+this.getNombre()+"\nFecha: "+this.getFecha().get(Calendar.DATE)+"/"+this.getFecha().get(Calendar.MONTH)+"/"+this.getFecha().get(Calendar.YEAR)+"\n";
+        Str = "Nombre: "+this.getNombre()+"\nFecha: "+this.getFecha().get(Calendar.DATE)+"/"+(this.getFecha().get(Calendar.MONTH)+1)+"/"+this.getFecha().get(Calendar.YEAR)+"\n";
         
         Str+="Lista De Recetas: \n";
         

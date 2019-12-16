@@ -106,8 +106,9 @@ public class Controlador {
     }
     
     public String inFechas(GregorianCalendar inicio, GregorianCalendar fin){
+        this.cds = new TreeSet();
         cds = registro.getComidas(inicio, fin);
-        if (cds == null){
+        if (cds.isEmpty()){
             return "No hay ninguna comida entre esas fechas\n";
         }else{
             String s = "";

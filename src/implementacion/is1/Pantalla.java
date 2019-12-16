@@ -71,7 +71,7 @@ public class Pantalla {
                     
                     if(ctrl.registro.getAlimento(nomAlimento)!=null){
                         System.out.println("Introduzca la cantidad:");
-                        float cantidad = s.nextFloat();
+                        float cantidad = Float.parseFloat(s.nextLine());
                         System.out.println("Introduzca la unidad de medida:");
                         String uMedida = (String)s.nextLine();
                         ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad);
@@ -91,7 +91,7 @@ public class Pantalla {
                             nomAlimento = s.nextLine();
                             if(ctrl.registro.getAlimento(nomAlimento)!=null){
                                 System.out.println("Introduzca la cantidad:");
-                                int cantidad = Integer.parseInt(s.nextLine());
+                                float cantidad = Float.parseFloat(s.nextLine());
                                 System.out.println("Introduzca la unidad de medida:");
                                 String uMedida = s.nextLine();
                                 ctrl.añadirAlimentoReceta(nomAlimento, uMedida, cantidad);
@@ -301,16 +301,18 @@ public class Pantalla {
                     System.out.println("Mes:");
                     int mi = Integer.parseInt(s.nextLine());
                     System.out.println("Año:");
+                    mi = mi-1;
                     int ai = Integer.parseInt(s.nextLine());
-                    GregorianCalendar inicio = new GregorianCalendar(di, mi, ai);
+                    GregorianCalendar inicio = new GregorianCalendar(ai, mi, di);
                     System.out.println("Introduzca la fecha final de consulta:\n"
                                      + "Día:");
                     int df = Integer.parseInt(s.nextLine());
                     System.out.println("Mes:");
                     int mf = Integer.parseInt(s.nextLine());
                     System.out.println("Año:");
+                    mf = mf - 1;
                     int af = Integer.parseInt(s.nextLine());
-                    GregorianCalendar fin = new GregorianCalendar(df, mf, af);
+                    GregorianCalendar fin = new GregorianCalendar(af, mf, df);
                     System.out.println(ctrl.inFechas(inicio, fin));
                     break;
                 case 2: //Registrar Comida

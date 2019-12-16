@@ -98,12 +98,12 @@ public class Registro {
     
     public SortedSet<comidaDiaria> getComidas(GregorianCalendar inicio, GregorianCalendar fin){
         Iterator it = lcd.iterator();
-        SortedSet <comidaDiaria> aux = null;
+        SortedSet <comidaDiaria> aux = new TreeSet();
         
         while(it.hasNext()){
             comidaDiaria cd = (comidaDiaria)it.next();
             
-            if(inicio.before((Calendar)cd.getFecha())&&fin.after((Calendar)cd.getFecha())){
+            if(cd.getFecha().after(inicio) && cd.getFecha().before(fin)){
                 aux.add(cd);
             }
         }
