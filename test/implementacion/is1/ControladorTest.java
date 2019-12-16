@@ -7,6 +7,7 @@ package implementacion.is1;
 
 import java.util.GregorianCalendar;
 import java.util.SortedSet;
+import java.util.TreeSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -129,6 +130,14 @@ public class ControladorTest {
         System.out.println("añadirGrupoAlimentos");
         Controlador instance = new Controlador();
         instance.añadirGrupoAlimentos();
+        GrupoAlimentos ga = instance.getGa();
+        ga.setNombre("nom1");
+        ga.setDescripcion("desc1");
+        Alimento a = new Alimento("nom1", "desc1", "tempC1");
+        ga.añadirAlimento(a);
+        String expResult = "nom1";
+        String result = instance.getGa().getNombre();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -137,12 +146,13 @@ public class ControladorTest {
     @Test
     public void testInNomDescGA() {
         System.out.println("inNomDescGA");
-        String nom = "";
-        String desc = "";
+        String nom = "nom1";
+        String desc = "desc1";
         Controlador instance = new Controlador();
         instance.inNomDescGA(nom, desc);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = instance.getGa().getNombre() == nom && instance.getGa().getDescripcion() == desc;
+        assertEquals(expResult, result);
     }
 
     /**
@@ -150,14 +160,12 @@ public class ControladorTest {
      */
     @Test
     public void testAñadirAlimento() {
-        System.out.println("a\u00f1adirAlimento");
-        String nomAlimento = "";
+        System.out.println("añadirAlimento");
+        String nomAlimento = "Ajo";
         Controlador instance = new Controlador();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.añadirAlimento(nomAlimento);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -167,11 +175,12 @@ public class ControladorTest {
     public void testConfirmarGrupo() {
         System.out.println("confirmarGrupo");
         Controlador instance = new Controlador();
-        boolean expResult = false;
+        instance.añadirGrupoAlimentos();
+        instance.getGa().setNombre("nom1");
+        instance.getGa().setDescripcion("desc1");
+        boolean expResult = true;
         boolean result = instance.confirmarGrupo();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -180,13 +189,17 @@ public class ControladorTest {
     @Test
     public void testInNomGA() {
         System.out.println("inNomGA");
-        String nom = "";
+        String nom = "nom1";
         Controlador instance = new Controlador();
-        String expResult = "";
+        instance.añadirGrupoAlimentos();
+        instance.inNomDescGA(nom, "desc1");
+        instance.añadirAlimento("Ajo");
+        instance.confirmarGrupo();
+        GrupoAlimentos ga = instance.getGa();
+        instance.añadirGrupoAlimentos();
+        String expResult = ga.toString();
         String result = instance.inNomGA(nom);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -196,9 +209,14 @@ public class ControladorTest {
     public void testConfirmarBorradoGA() {
         System.out.println("confirmarBorradoGA");
         Controlador instance = new Controlador();
+        instance.añadirGrupoAlimentos();
+        instance.inNomDescGA("nom1", "desc1");
+        instance.añadirAlimento("Ajo");
+        instance.confirmarGrupo();
         instance.confirmarBorradoGA();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        GrupoAlimentos expResult = null;
+        GrupoAlimentos result = instance.getRegistro().getGrupoAlimentos("nom1");
+        assertEquals(expResult, result);
     }
 
     /**
@@ -207,13 +225,16 @@ public class ControladorTest {
     @Test
     public void testEliminarAlimentoGA() {
         System.out.println("eliminarAlimentoGA");
-        String nomAlimento = "";
+        String nomAlimento = "Ajo";
         Controlador instance = new Controlador();
-        String expResult = "";
+        instance.añadirGrupoAlimentos();
+        instance.inNomDescGA("nom1", "desc1");
+        instance.añadirAlimento(nomAlimento);
+        instance.confirmarGrupo();
+        Alimento a = instance.getRegistro().getAlimento(nomAlimento);
+        String expResult = a.toString();
         String result = instance.eliminarAlimentoGA(nomAlimento);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -223,9 +244,16 @@ public class ControladorTest {
     public void testConfirmarBorradoA() {
         System.out.println("confirmarBorradoA");
         Controlador instance = new Controlador();
+        String nomAlimento = "Ajo";
+        instance.añadirGrupoAlimentos();
+        instance.inNomDescGA("nom1", "desc1");
+        instance.añadirAlimento(nomAlimento);
+        instance.confirmarGrupo();
+        instance.eliminarAlimentoGA(nomAlimento);
         instance.confirmarBorradoA();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Alimento expResult = null;
+        Alimento result = instance.getGa().getAlimento(nomAlimento);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -240,8 +268,6 @@ public class ControladorTest {
         String expResult = "";
         String result = instance.inFechas(inicio, fin);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -252,8 +278,6 @@ public class ControladorTest {
         System.out.println("registroComida");
         Controlador instance = new Controlador();
         instance.registroComida();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -305,11 +329,11 @@ public class ControladorTest {
     public void testGetCds() {
         System.out.println("getCds");
         Controlador instance = new Controlador();
-        SortedSet<comidaDiaria> expResult = null;
+        SortedSet cds = new TreeSet();
+        instance.setCds(cds);
+        SortedSet<comidaDiaria> expResult = cds;
         SortedSet<comidaDiaria> result = instance.getCds();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -318,11 +342,12 @@ public class ControladorTest {
     @Test
     public void testSetCds() {
         System.out.println("setCds");
-        SortedSet<comidaDiaria> cds = null;
         Controlador instance = new Controlador();
+        SortedSet cds = new TreeSet();
         instance.setCds(cds);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        SortedSet<comidaDiaria> expResult = cds;
+        SortedSet<comidaDiaria> result = instance.getCds();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -332,11 +357,11 @@ public class ControladorTest {
     public void testGetCd() {
         System.out.println("getCd");
         Controlador instance = new Controlador();
-        comidaDiaria expResult = null;
+        comidaDiaria cd = new comidaDiaria();
+        instance.setCd(cd);
+        comidaDiaria expResult = cd;
         comidaDiaria result = instance.getCd();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -345,11 +370,12 @@ public class ControladorTest {
     @Test
     public void testSetCd() {
         System.out.println("setCd");
-        comidaDiaria cd = null;
         Controlador instance = new Controlador();
+        comidaDiaria cd = new comidaDiaria();
         instance.setCd(cd);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        comidaDiaria expResult = cd;
+        comidaDiaria result = instance.getCd();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -359,11 +385,11 @@ public class ControladorTest {
     public void testGetR() {
         System.out.println("getR");
         Controlador instance = new Controlador();
-        Receta expResult = null;
+        Receta r = new Receta();
+        instance.setR(r);
+        Receta expResult = r;
         Receta result = instance.getR();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -372,11 +398,12 @@ public class ControladorTest {
     @Test
     public void testSetR() {
         System.out.println("setR");
-        Receta r = null;
         Controlador instance = new Controlador();
+        Receta r = new Receta();
         instance.setR(r);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Receta expResult = r;
+        Receta result = instance.getR();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -386,11 +413,11 @@ public class ControladorTest {
     public void testGetA() {
         System.out.println("getA");
         Controlador instance = new Controlador();
-        Alimento expResult = null;
+        Alimento a = new Alimento("nom1","desc1","tempC1");
+        instance.setA(a);
+        Alimento expResult = a;
         Alimento result = instance.getA();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -399,11 +426,12 @@ public class ControladorTest {
     @Test
     public void testSetA() {
         System.out.println("setA");
-        Alimento a = null;
         Controlador instance = new Controlador();
+        Alimento a = new Alimento("nom1","desc1","tempC1");
         instance.setA(a);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Alimento expResult = a;
+        Alimento result = instance.getA();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -413,11 +441,11 @@ public class ControladorTest {
     public void testGetGa() {
         System.out.println("getGa");
         Controlador instance = new Controlador();
-        GrupoAlimentos expResult = null;
+        GrupoAlimentos ga = new GrupoAlimentos();
+        instance.setGa(ga);
+        GrupoAlimentos expResult = ga;
         GrupoAlimentos result = instance.getGa();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -426,11 +454,12 @@ public class ControladorTest {
     @Test
     public void testSetGa() {
         System.out.println("setGa");
-        GrupoAlimentos ga = null;
         Controlador instance = new Controlador();
+        GrupoAlimentos ga = new GrupoAlimentos();
         instance.setGa(ga);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        GrupoAlimentos expResult = ga;
+        GrupoAlimentos result = instance.getGa();
+        assertEquals(expResult, result);
     }
 
     /**
