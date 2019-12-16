@@ -177,16 +177,13 @@ public class Pantalla {
                     String nomGrupo = s.nextLine();
                     System.out.println(ctrl.inNomGA(nomGrupo));
                     if (ctrl.getGa() != null){
-                        j = -1;
-                        if(j == 1){
                             System.out.println("\n¿Desea eliminar este Grupo de Alimentos?\n"
                                              + "1. Eliminar\n"
                                              + "0. Cancelar\n");
                             j = Integer.parseInt(s.nextLine());
                             if (j == 1){
                                 ctrl.confirmarBorradoGA();
-                            }
-                        } 
+                            } 
                     }
                     break;
                 case 3: //Añadir Alimentos a un Grupo
@@ -295,24 +292,24 @@ public class Pantalla {
                              + "2. Registrar Comida\n\n"
                              + "0. Salir\n\n"
                              + "Introduzca la operación que desea realizar:");
-            i = s.nextInt();
+            i = Integer.parseInt(s.nextLine());
             switch (i) {
                 case 1: //Consultar Comidas
                     System.out.println("Introduzca la fecha inicial de consulta:\n"
                                      + "Día:");
-                    int di = s.nextInt();
+                    int di = Integer.parseInt(s.nextLine());
                     System.out.println("Mes:");
-                    int mi = s.nextInt();
+                    int mi = Integer.parseInt(s.nextLine());
                     System.out.println("Año:");
-                    int ai = s.nextInt();
+                    int ai = Integer.parseInt(s.nextLine());
                     GregorianCalendar inicio = new GregorianCalendar(di, mi, ai);
                     System.out.println("Introduzca la fecha final de consulta:\n"
                                      + "Día:");
-                    int df = s.nextInt();
+                    int df = Integer.parseInt(s.nextLine());
                     System.out.println("Mes:");
-                    int mf = s.nextInt();
+                    int mf = Integer.parseInt(s.nextLine());
                     System.out.println("Año:");
-                    int af = s.nextInt();
+                    int af = Integer.parseInt(s.nextLine());
                     GregorianCalendar fin = new GregorianCalendar(df, mf, af);
                     System.out.println(ctrl.inFechas(inicio, fin));
                     break;
@@ -321,6 +318,7 @@ public class Pantalla {
                     System.out.println("\nIntroduzca el nombre de la Comida:");
                     String nom = s.nextLine();
                     ctrl.inNomComida(nom);
+                    
                     System.out.println("\nIntroduzca el nombre de la Receta que conforma la Comida:");
                     String nomReceta = s.nextLine();
                     if(!ctrl.añadirReceta(nomReceta)){
@@ -331,20 +329,19 @@ public class Pantalla {
                         System.out.println("\n¿Desea agregar más Recetas?\n"
                                          + "1. Seguir agregando\n"
                                          + "0. Salir\n");
-                        j = s.nextInt();
-                        if (i == 1){
+                        j = Integer.parseInt(s.nextLine());
+                        if (j == 1){
                             System.out.println("\nIntroduzca el nombre de la Receta:");
                             nomReceta = s.nextLine();
                             if(!ctrl.añadirAlimento(nomReceta)){
                                 System.out.println("\nLa Receta no existe en el Sistema\n");
                             }
-                        }else{
-                                
                         }
                     }
                     if (!ctrl.confirmarComida()){
                         System.out.println("\nYa existe una Comida con ese nombre en el Sistema\n");
                     }
+                    
                     break;
                 default:
                     break;

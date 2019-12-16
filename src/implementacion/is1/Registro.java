@@ -12,13 +12,13 @@ import java.util.*;
  * @author eugen
  */
 public class Registro {
-    public SortedSet<comidaDiaria>lcd;
+    public Set<comidaDiaria>lcd;
     public Set<Alimento>lda;
     public Set<Receta>ldr;
     public Set<GrupoAlimentos>lga;
     
     public Registro (){
-        lcd = new TreeSet();
+        lcd = new HashSet();
         lda = new HashSet();
         ldr = new HashSet();
         lga = new HashSet();
@@ -103,7 +103,7 @@ public class Registro {
         while(it.hasNext()){
             comidaDiaria cd = (comidaDiaria)it.next();
             
-            if(inicio.before(cd.getFecha())&&fin.after(cd.getFecha())){
+            if(inicio.before((Calendar)cd.getFecha())&&fin.after((Calendar)cd.getFecha())){
                 aux.add(cd);
             }
         }

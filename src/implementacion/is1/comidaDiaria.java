@@ -49,7 +49,7 @@ public class comidaDiaria {
     }
 
     public void setFecha() {
-        this.fecha = new GregorianCalendar();
+        this.fecha = GregorianCalendar.getInstance();
     }
     
     public boolean añadirReceta(Receta r){
