@@ -6,6 +6,7 @@
 package implementacion.is1;
 
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import org.junit.After;
@@ -262,10 +263,20 @@ public class ControladorTest {
     @Test
     public void testInFechas() {
         System.out.println("inFechas");
-        GregorianCalendar inicio = null;
-        GregorianCalendar fin = null;
+        GregorianCalendar inicio = new GregorianCalendar(10, 15, 2019);
+        GregorianCalendar fin = new GregorianCalendar(10, 11, 2022);
         Controlador instance = new Controlador();
-        String expResult = "";
+        SortedSet<comidaDiaria> cds = new TreeSet();
+        comidaDiaria cd = new comidaDiaria();
+        cds.add(cd);
+        instance.setCd(cd);
+        instance.confirmarComida();
+        String s = "";
+        Iterator it = cds.iterator();
+        while(it.hasNext()){
+            s += it.next().toString() + "\n"; 
+        }
+        String expResult = s;
         String result = instance.inFechas(inicio, fin);
         assertEquals(expResult, result);
     }
