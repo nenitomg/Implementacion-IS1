@@ -177,16 +177,13 @@ public class Pantalla {
                     String nomGrupo = s.nextLine();
                     System.out.println(ctrl.inNomGA(nomGrupo));
                     if (ctrl.getGa() != null){
-                        j = -1;
-                        if(j == 1){
                             System.out.println("\n¿Desea eliminar este Grupo de Alimentos?\n"
                                              + "1. Eliminar\n"
                                              + "0. Cancelar\n");
                             j = Integer.parseInt(s.nextLine());
                             if (j == 1){
                                 ctrl.confirmarBorradoGA();
-                            }
-                        } 
+                            } 
                     }
                     break;
                 case 3: //Añadir Alimentos a un Grupo
