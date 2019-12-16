@@ -46,7 +46,8 @@ public class comidaDiariaTest {
     public void testGetNombre() {
         System.out.println("getNombre");
         comidaDiaria instance = new comidaDiaria();
-        String expResult = "";
+        instance.setNombre("Manuel");
+        String expResult = "Manuel";
         String result = instance.getNombre();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -59,9 +60,11 @@ public class comidaDiariaTest {
     @Test
     public void testSetNombre() {
         System.out.println("setNombre");
-        String nombre = "";
+        String nombre = "Manuel";
         comidaDiaria instance = new comidaDiaria();
         instance.setNombre(nombre);
+        
+        assertEquals(nombre, instance.getNombre());
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -174,7 +177,7 @@ public class comidaDiariaTest {
         int expResult = 0;
         int result = instance.hashCode();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        // TOD review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
