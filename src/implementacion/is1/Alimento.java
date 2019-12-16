@@ -54,7 +54,7 @@ public class Alimento {
         
         Alimento a = (Alimento)o;
         
-        return this.getNombre().equals(a);
+        return this.getNombre().equals(a.getNombre());
     }
     
     public int hashCode(){
