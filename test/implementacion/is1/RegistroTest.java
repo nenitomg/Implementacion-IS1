@@ -7,6 +7,7 @@ package implementacion.is1;
 
 import java.util.GregorianCalendar;
 import java.util.SortedSet;
+import java.util.TreeSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -169,14 +170,17 @@ public class RegistroTest {
     @Test
     public void testGetComidas() {
         System.out.println("getComidas");
-        GregorianCalendar inicio = null;
-        GregorianCalendar fin = null;
+        GregorianCalendar inicio = new GregorianCalendar(10, 15, 2019);
+        GregorianCalendar fin = new GregorianCalendar(10, 11, 2022);
+        SortedSet<comidaDiaria> cds = new TreeSet();
+        comidaDiaria cd = new comidaDiaria();
+        cd.setFecha();
+        cds.add(cd);
         Registro instance = new Registro();
-        SortedSet<comidaDiaria> expResult = null;
+        instance.añadirComida(cd);
+        SortedSet<comidaDiaria> expResult = cds;
         SortedSet<comidaDiaria> result = instance.getComidas(inicio, fin);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
